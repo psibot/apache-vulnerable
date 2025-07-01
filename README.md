@@ -32,6 +32,6 @@ To scan targets in a file :
 
 ```apache-vulnerable-versions.yaml``` - Detects version of Apache and will output HIGH if vulnerible. 
 
-![apache-vulnerable-versions] (https://imgur.com/a/jxFLSKr)
+[Imgur](https://imgur.com/WTDHjtO)
 
 ```apache-path-traversal-rce-v2.yaml``` - Will run a exploit and show the path vulnerible. 
