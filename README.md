@@ -28,6 +28,8 @@ To scan targets in a file :
 ```  nuclei --silent  -t apache-vulnerable-versions.yaml -l hosts.txt``` 
 
 
-apache-vulnerable-versions.yaml - Detects version of Apache and will HIGH if vulnerible. 
+## Info about Nuclei templates 
 
-apache-path-traversal-rce-v2.yaml - Will run a exploit and show the path vulnerible. 
+```apache-vulnerable-versions.yaml``` - Detects version of Apache and will HIGH if vulnerible. 
+
+```apache-path-traversal-rce-v2.yaml``` - Will run a exploit and show the path vulnerible. 
