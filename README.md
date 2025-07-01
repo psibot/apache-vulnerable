@@ -3,6 +3,9 @@
 ```Apache Version 2.4.49 and 2.4.50 ``` 
 
 
+(CVE-2021-41773, CVE-2021-42013)
+
+
 ## How to use : 
 
 You Will need nuclei ! 
@@ -32,6 +35,9 @@ To scan targets in a file :
 
 ```apache-vulnerable-versions.yaml``` - Detects version of Apache and will output HIGH if vulnerible. 
 
-![Imgur](https://imgur.com/WTDHjtO.png)
+![apache-vulnerable-versions.yaml](https://imgur.com/WTDHjtO.png)
 
-```apache-path-traversal-rce-v2.yaml``` - Will run a exploit and show the path vulnerible. 
+
+```apache-path-traversal-rce-v2.yaml``` - Will run a exploit and show the path vulnerible. Will output CRITICAL if  vulnerible.
+
+![apache-path-traversal-rce-v2.yaml](https://imgur.com/a/FpEEps4.png)
