@@ -17,10 +17,17 @@ Check local nuclei install and verify template
 
 ```nuclei  -t apache-vulnerable-versions.yaml -vv ```
 
+and 
+
+```nuclei -t apache-path-traversal-rce-v2.yaml -vv ```
+
 You should see 
 
 ```[apache-vulnerable-versions] Vulnerable Apache Versions (2.4.49-2.4.50) (@psibot) [high] ```
 
+and 
+
+```[apache-path-traversal-passwd] Apache Path Traversal - /etc/passwd Exposure (@psibot) [critical]```
 
 To scan target : 
 
