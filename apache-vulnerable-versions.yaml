@@ -1,0 +1,30 @@
+id: apache-vulnerable-versions
+
+info:
+  name: Vulnerable Apache Versions (2.4.49-2.4.50)
+  author: psibot
+  severity: high
+  description: |
+    Detects Apache HTTP Server versions 2.4.49 and 2.4.50 which are vulnerable to
+    path traversal and RCE vulnerabilities (CVE-2021-41773, CVE-2021-42013)
+  reference:
+    - https://httpd.apache.org/security/vulnerabilities_24.html
+    - https://nvd.nist.gov/vuln/detail/CVE-2021-41773
+    - https://nvd.nist.gov/vuln/detail/CVE-2021-42013
+  tags: cve,cve2021,apache,version
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/"
+
+    matchers:
+      - type: regex
+        regex:
+          - "Server: Apache/2\\.4\\.49"
+          - "Server: Apache/2\\.4\\.50"
+        part: header
+        condition: or
+
+    headers:
+      User-Agent: "Nuclei-Scanner"
