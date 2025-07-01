@@ -40,4 +40,4 @@ To scan targets in a file :
 
 ```apache-path-traversal-rce-v2.yaml``` - Will run a exploit and show the path vulnerible. Will output CRITICAL if  vulnerible.
 
-![apache-path-traversal-rce-v2.yaml](https://imgur.com/a/FpEEps4.png)
+![apache-path-traversal-rce-v2.yaml](https://imgur.com/Nrg7vER.png)
