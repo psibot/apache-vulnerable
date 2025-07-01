@@ -3,7 +3,7 @@
 ```Apache Version 2.4.49 and 2.4.50 ``` 
 
 
-# How to use : 
+## How to use : 
 
 You Will need nuclei ! 
 
@@ -30,6 +30,8 @@ To scan targets in a file :
 
 ## Info about Nuclei templates 
 
-```apache-vulnerable-versions.yaml``` - Detects version of Apache and will HIGH if vulnerible. 
+```apache-vulnerable-versions.yaml``` - Detects version of Apache and will output HIGH if vulnerible. 
+
+![apache-vulnerable-versions] (https://imgur.com/a/jxFLSKr)
 
 ```apache-path-traversal-rce-v2.yaml``` - Will run a exploit and show the path vulnerible. 
